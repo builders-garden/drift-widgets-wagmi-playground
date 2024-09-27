@@ -179,10 +179,10 @@
     "@babel/helper-validator-identifier" "^7.24.7"
     to-fast-properties "^2.0.0"
 
-"@buildersgarden/drift@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@buildersgarden/drift/-/drift-0.0.1.tgz#0c5685643a782a27074c4c55c78e58eed8b33401"
-  integrity sha512-+o/3YI78iaVQGgfNWLARqIvRTqeEsSfmJWvbYzZ4RuVEVMTjmmoY1LQ1Zz0Wb26ALuM/PEjRNZM8OGP4hW7CMg==
+"@buildersgarden/drift@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@buildersgarden/drift/-/drift-0.0.2.tgz#0f9520492d5fffa95877da44c12eec6dace7846a"
+  integrity sha512-WiN74yNB6j1g/3ch7E/pQpvYVVUo+ssdjuQXffInXdZOF3BxkVyoHE0N+3fN1bkPaVaI54dhR9zpI36m0+zNEg==
   dependencies:
     "@eslint/js" "^9.11.1"
     "@eslint/migrate-config" "^1.3.0"

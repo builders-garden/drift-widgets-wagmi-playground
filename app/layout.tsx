@@ -1,3 +1,4 @@
+import "@rainbow-me/rainbowkit/styles.css";
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
@@ -8,8 +9,8 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Privy AA Starter",
-  description: "Next.js starter with Privy Embedded Wallets and Smart Wallets",
+  title: "Drift Widget Playground",
+  description: "Playground for Drift Widgets",
 };
 
 export default function RootLayout({

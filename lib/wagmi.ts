@@ -1,11 +1,9 @@
-import { createConfig } from "@privy-io/wagmi";
-import { http } from "wagmi";
-import { base, baseSepolia } from "wagmi/chains";
+import { getDefaultConfig } from "@rainbow-me/rainbowkit";
+import { base, baseSepolia } from "viem/chains";
 
-export const wagmiConfig = createConfig({
+export const config = getDefaultConfig({
+  appName: "Drift Widget Playground",
+  projectId: "YOUR_PROJECT_ID",
   chains: [base, baseSepolia],
-  transports: {
-    [base.id]: http(),
-    [baseSepolia.id]: http(),
-  },
+  ssr: true, // If your dApp uses server side rendering (SSR)
 });

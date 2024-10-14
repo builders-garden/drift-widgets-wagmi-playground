@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@buildersgarden/drift": "0.0.8",
+    "@buildersgarden/drift": "^0.0.8",
     "@rainbow-me/rainbowkit": "^2.1.7",
     "lucide-react": "^0.439.0",
     "next": "14.2.12",
@@ -21,9 +21,6 @@
   },
   "devDependencies": {
     "@nextui-org/react": "^2.4.6",
-    "@privy-io/react-auth": "^1.87.0",
-    "@privy-io/server-auth": "^1.12.0",
-    "@privy-io/wagmi": "^0.2.12",
     "@tanstack/react-query": "^5.56.2",
     "@types/node": "^20",
     "@types/react": "^18",

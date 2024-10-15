@@ -4,7 +4,7 @@ import { useAccount, useWalletClient } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Button, Divider, Link } from "@nextui-org/react";
 import { DriftOfframp, DriftOfframpModal } from "@buildersgarden/drift";
-import { Github } from "lucide-react";
+import { Book, Github } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -16,20 +16,36 @@ export default function Home() {
   return (
     <div className="min-h-screen min-w-screen text-black">
       <div className="flex flex-col gap-8 sm:gap-12 justify-center items-center px-4 sm:px-8 md:px-16 lg:px-48 py-12 sm:py-24">
-        <Link
-          href="https://github.com/builders-garden/drift-widgets-wagmi-playground/"
-          target="_blank"
-        >
-          <Button
-            radius="sm"
-            size="sm"
-            className="text-black border-black"
-            variant="bordered"
-            startContent={<Github className="w-4 h-4" />}
+        <div className="flex flex-row gap-4 justify-center items-center">
+          <Link
+            href="https://github.com/builders-garden/drift-widgets-wagmi-playground/"
+            target="_blank"
           >
-            Github
-          </Button>
-        </Link>
+            <Button
+              radius="sm"
+              size="sm"
+              className="text-black border-black"
+              variant="bordered"
+              startContent={<Github className="w-4 h-4" />}
+            >
+              Github
+            </Button>
+          </Link>
+          <Link
+            href="https://builders-garden.notion.site/Drift-SDK-Documentation-120679ed099e80e3a31aeb1567e79d12"
+            target="_blank"
+          >
+            <Button
+              radius="sm"
+              size="sm"
+              className="text-black border-black"
+              variant="bordered"
+              startContent={<Book className="w-4 h-4" />}
+            >
+              Docs
+            </Button>
+          </Link>
+        </div>
         <div className="text-2xl sm:text-3xl md:text-4xl font-black text-center">
           Drift Widgets Playground
         </div>

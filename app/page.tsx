@@ -2,11 +2,11 @@
 
 import { useAccount, useWalletClient } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { Code, monokai } from "react-code-blocks";
 import { Button, Divider, Link } from "@nextui-org/react";
 import { DriftOfframp, DriftOfframpModal } from "@buildersgarden/drift";
 import { Github } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const { isConnected } = useAccount();
@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen min-w-screen text-black">
-      <div className="flex flex-col gap-12 justify-center items-center px-48 py-24">
+      <div className="flex flex-col gap-8 sm:gap-12 justify-center items-center px-4 sm:px-8 md:px-16 lg:px-48 py-12 sm:py-24">
         <Link
           href="https://github.com/builders-garden/drift-widgets-wagmi-playground/"
           target="_blank"
@@ -30,12 +30,14 @@ export default function Home() {
             Github
           </Button>
         </Link>
-        <div className="text-4xl font-black">Drift Widgets Playground</div>
-        <div className="flex flex-col gap-4 justify-center items-center">
+        <div className="text-2xl sm:text-3xl md:text-4xl font-black text-center">
+          Drift Widgets Playground
+        </div>
+        <div className="flex flex-col gap-4 justify-center items-center w-full max-w-md">
           <ConnectButton />
           {isConnected && (
-            <div className="flex flex-col gap-4 justify-center items-center">
-              <div className=" w-fit">
+            <div className="flex flex-col gap-4 justify-center items-center w-full">
+              <div className="w-full">
                 <DriftOfframp walletClient={walletClient as never} />
               </div>
               <Button
@@ -54,32 +56,14 @@ export default function Home() {
             </div>
           )}
         </div>
-        <Divider className="w-1/3" />
-        <div className="flex flex-col gap-4 justify-center items-center">
-          <div className="text-xl font-bold">How to use</div>
-          <Code
-            text={"yarn add @buildersgarden/drift"}
-            language={"tsx"}
-            showLineNumbers={false}
-            theme={monokai}
-          />
-          <Code
-            text={
-              "import {DriftOfframp, DriftProvider} from '@buildersgarden/drift'"
-            }
-            language={"tsx"}
-            showLineNumbers={false}
-            theme={monokai}
-          />
-          <Code
-            text={
-              "<DriftProvider appId={'id'} appSecret={'secret'}>\n   /* ... */\n   <DriftOfframp walletClient={walletClient} />\n   /* ... */\n<DriftProvider/>"
-            }
-            language={"tsx"}
-            showLineNumbers={false}
-            theme={monokai}
-          />
-        </div>
+        <Divider className="w-1/3 max-w-md" />
+        <Image
+          src="/images/code.svg"
+          alt="Drift Widgets Code"
+          className="w-full max-w-[300px] sm:max-w-[450px] md:max-w-[550px] lg:max-w-[650px] h-auto"
+          width={700}
+          height={700}
+        />
       </div>
     </div>
   );

@@ -55,10 +55,6 @@ export default function Page() {
               paymentDetails={{
                 amount: 10,
                 destinationTokenAddress: selectedToken as `0x${string}`,
-                destinationTokenDecimals:
-                  selectedToken === "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
-                    ? 6
-                    : 18,
                 destinationTokenChainId: base.id,
                 recipientAddress: walletClient?.account
                   .address as `0x${string}`,

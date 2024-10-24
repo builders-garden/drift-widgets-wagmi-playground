@@ -7,8 +7,6 @@ import {
   DriftOfframp,
   DriftOfframpModal,
   DriftPay,
-  DriftPayButton,
-  DriftXPayButton,
 } from "@buildersgarden/drift";
 import { Book, Github } from "lucide-react";
 import { useState } from "react";
@@ -83,7 +81,6 @@ export default function Home() {
                   amount: 10,
                   destinationTokenAddress:
                     "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
-                  destinationTokenDecimals: 6,
                   destinationTokenChainId: base.id,
                   recipientAddress: walletClient?.account
                     .address as `0x${string}`,

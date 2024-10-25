@@ -19,6 +19,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             <DriftProvider
               appId={process.env.NEXT_PUBLIC_DRIFT_APP_ID as string}
               appSecret={process.env.NEXT_PUBLIC_DRIFT_APP_SECRET as string}
+              decentApiKey={process.env.NEXT_PUBLIC_DECENT_API_KEY as string}
             >
               <main className="h-full">{children}</main>
             </DriftProvider>

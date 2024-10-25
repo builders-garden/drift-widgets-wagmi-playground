@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@buildersgarden/drift": "^0.0.12",
+    "@buildersgarden/drift": "^0.0.15",
     "@rainbow-me/rainbowkit": "^2.1.7",
     "lucide-react": "^0.439.0",
     "next": "14.2.12",
@@ -26,6 +26,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "encoding": "^0.1.13",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",

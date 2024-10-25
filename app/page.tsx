@@ -3,10 +3,15 @@
 import { useAccount, useWalletClient } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Button, Divider, Link } from "@nextui-org/react";
-import { DriftOfframp, DriftOfframpModal } from "@buildersgarden/drift";
+import {
+  DriftOfframp,
+  DriftOfframpModal,
+  DriftPay,
+} from "@buildersgarden/drift";
 import { Book, Github } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import { base } from "viem/chains";
 
 export default function Home() {
   const { isConnected } = useAccount();
@@ -68,6 +73,18 @@ export default function Home() {
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}
                 walletClient={walletClient as never}
+              />
+
+              <DriftPay
+                walletClient={walletClient as never}
+                paymentDetails={{
+                  amount: 10,
+                  destinationTokenAddress:
+                    "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                  destinationTokenChainId: base.id,
+                  recipientAddress: walletClient?.account
+                    .address as `0x${string}`,
+                }}
               />
             </div>
           )}

@@ -2,7 +2,7 @@
 
 import { useAccount, useWalletClient } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { Button, Divider, Link } from "@nextui-org/react";
+import { Button, Divider, Link, Tab, Tabs } from "@nextui-org/react";
 import {
   DriftOfframp,
   DriftOfframpModal,
@@ -57,46 +57,59 @@ export default function Home() {
         <div className="flex flex-col gap-4 justify-center items-center w-full max-w-md">
           <ConnectButton />
           {isConnected && (
-            <div className="flex flex-col gap-4 justify-center items-center w-full">
-              <div className="w-full">
-                <DriftOfframp walletClient={walletClient as never} />
-              </div>
-              <Button
-                onClick={() => setIsOpen(true)}
-                color="primary"
-                className="w-full"
-              >
-                Open Offramp Modal Version
-              </Button>
+            <Tabs aria-label="Options">
+              <Tab key="photos" title="Offramp">
+                <div className="flex flex-col gap-4 justify-center items-center w-full">
+                  <div className="w-full">
+                    <DriftOfframp walletClient={walletClient as never} />
+                  </div>
+                  <Button
+                    onClick={() => setIsOpen(true)}
+                    color="primary"
+                    className="w-full"
+                  >
+                    Open Offramp Modal Version
+                  </Button>
 
-              <DriftOfframpModal
-                isOpen={isOpen}
-                onClose={() => setIsOpen(false)}
-                walletClient={walletClient as never}
-              />
-
-              <DriftPay
-                walletClient={walletClient as never}
-                paymentDetails={{
-                  amount: 10,
-                  destinationTokenAddress:
-                    "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
-                  destinationTokenChainId: base.id,
-                  recipientAddress: walletClient?.account
-                    .address as `0x${string}`,
-                }}
-              />
-            </div>
+                  <DriftOfframpModal
+                    isOpen={isOpen}
+                    onClose={() => setIsOpen(false)}
+                    walletClient={walletClient as never}
+                  />
+                </div>
+                <Divider className="w-1/3 max-w-md" />
+                <Image
+                  src="/images/code.svg"
+                  alt="Drift Widgets Code"
+                  className="w-full max-w-[300px] sm:max-w-[450px] md:max-w-[550px] lg:max-w-[650px] h-auto"
+                  width={700}
+                  height={700}
+                />
+              </Tab>
+              <Tab key="pay" title="Pay">
+                <DriftPay
+                  walletClient={walletClient as never}
+                  paymentDetails={{
+                    amount: 10,
+                    destinationTokenAddress:
+                      "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                    destinationTokenChainId: base.id,
+                    recipientAddress: walletClient?.account
+                      .address as `0x${string}`,
+                  }}
+                />
+                <Divider className="w-1/3 max-w-md" />
+                <Image
+                  src="/images/pay-code.svg"
+                  alt="Drift Pay Code"
+                  className="w-full max-w-[300px] sm:max-w-[450px] md:max-w-[550px] lg:max-w-[650px] h-auto"
+                  width={700}
+                  height={700}
+                />
+              </Tab>
+            </Tabs>
           )}
         </div>
-        <Divider className="w-1/3 max-w-md" />
-        <Image
-          src="/images/code.svg"
-          alt="Drift Widgets Code"
-          className="w-full max-w-[300px] sm:max-w-[450px] md:max-w-[550px] lg:max-w-[650px] h-auto"
-          width={700}
-          height={700}
-        />
       </div>
     </div>
   );

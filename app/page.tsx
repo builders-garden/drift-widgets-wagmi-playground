@@ -65,8 +65,7 @@ export default function Home() {
                   </div>
                   <Button
                     onClick={() => setIsOpen(true)}
-                    color="primary"
-                    className="w-full"
+                    className="w-full bg-black text-white"
                   >
                     Open Offramp Modal Version
                   </Button>
@@ -98,7 +97,6 @@ export default function Home() {
                       .address as `0x${string}`,
                   }}
                 />
-                <Divider className="w-1/3 max-w-md" />
                 <Image
                   src="/images/pay-code.svg"
                   alt="Drift Pay Code"

@@ -1,7 +1,7 @@
 "use client";
 import { DriftPay } from "@buildersgarden/drift";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { base } from "viem/chains";
+import { base, optimism } from "viem/chains";
 import { useAccount, useWalletClient } from "wagmi";
 import { useState } from "react";
 import { Button, Divider } from "@nextui-org/react";
@@ -10,9 +10,15 @@ import Image from "next/image";
 export default function Page() {
   const { isConnected } = useAccount();
   const { data: walletClient } = useWalletClient();
-  const [selectedToken, setSelectedToken] = useState(
-    "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
-  );
+  const [selectedToken, setSelectedToken] = useState<{
+    address: `0x${string}`;
+    chainId: number;
+  }>({
+    address: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+    chainId: base.id,
+  });
+
+  console.log(selectedToken);
 
   return (
     <div className="min-h-screen min-w-screen text-black">
@@ -26,24 +32,32 @@ export default function Page() {
             <div className="flex gap-4">
               <Button
                 className={`px-4 py-2 text-white rounded transition-opacity duration-300 ${
-                  selectedToken === "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+                  selectedToken.address ===
+                  "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
                     ? "bg-blue-500 opacity-100"
                     : "bg-blue-500 opacity-50 hover:opacity-75"
                 }`}
                 onClick={() =>
-                  setSelectedToken("0x833589fcd6edb6e08f4c7c32d4f71b54bda02913")
+                  setSelectedToken({
+                    address: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                    chainId: base.id,
+                  })
                 }
               >
                 USDC on Base
               </Button>
               <Button
                 className={`px-4 py-2 text-white rounded transition-opacity duration-300 ${
-                  selectedToken === "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85"
+                  selectedToken.address ===
+                  "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85"
                     ? "bg-red-500 opacity-100"
                     : "bg-red-500 opacity-50 hover:opacity-75"
                 }`}
                 onClick={() =>
-                  setSelectedToken("0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85")
+                  setSelectedToken({
+                    address: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+                    chainId: optimism.id,
+                  })
                 }
               >
                 USDC on Optimism
@@ -53,9 +67,9 @@ export default function Page() {
             <DriftPay
               walletClient={walletClient as never}
               paymentDetails={{
-                amount: 10,
-                destinationTokenAddress: selectedToken as `0x${string}`,
-                destinationTokenChainId: base.id,
+                amount: 1,
+                destinationTokenAddress: selectedToken.address as `0x${string}`,
+                destinationTokenChainId: selectedToken.chainId,
                 recipientAddress: walletClient?.account
                   .address as `0x${string}`,
               }}

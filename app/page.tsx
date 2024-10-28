@@ -12,11 +12,13 @@ import { Book, Github } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 import { base } from "viem/chains";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { isConnected } = useAccount();
   const { data: walletClient } = useWalletClient();
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <div className="min-h-screen min-w-screen text-black">
@@ -58,7 +60,7 @@ export default function Home() {
           <ConnectButton />
           {isConnected && (
             <Tabs aria-label="Options">
-              <Tab key="photos" title="Offramp">
+              <Tab key="offramp" title="Offramp">
                 <div className="flex flex-col gap-4 justify-center items-center w-full">
                   <div className="w-full">
                     <DriftOfframp walletClient={walletClient as never} />
@@ -89,12 +91,24 @@ export default function Home() {
                 <DriftPay
                   walletClient={walletClient as never}
                   paymentDetails={{
-                    amount: 10,
+                    amount: 1,
                     destinationTokenAddress:
                       "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
                     destinationTokenChainId: base.id,
                     recipientAddress: walletClient?.account
                       .address as `0x${string}`,
+                  }}
+                  buttonText="Pay"
+                  onSuccess={(txHash: string) => {
+                    const params = new URLSearchParams({
+                      txHash,
+                      txExplorerUrl: `https://basescan.org/tx/${txHash}`,
+                      recipient: walletClient?.account.address || "",
+                    });
+                    // router.push(
+                    //   `https://x.com/limone_eth?${params.toString()}`
+                    // );
+                    console.log("onSuccess", params.toString());
                   }}
                 />
                 <Image

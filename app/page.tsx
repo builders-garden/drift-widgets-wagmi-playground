@@ -98,7 +98,6 @@ export default function Home() {
                     recipientAddress: walletClient?.account
                       .address as `0x${string}`,
                   }}
-                  buttonText="Pay"
                   onSuccess={(txHash: string) => {
                     const params = new URLSearchParams({
                       txHash,
